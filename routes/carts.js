@@ -43,14 +43,28 @@ const readProductsFile = async () => {
   }
 };
 
-// POST /api/carts/ - Crea nuevo carrito
+// POST /api/carts/ - Crear un nuevo carrito con productos
 router.post('/', async (req, res) => {
-  console.log('POST /api/carts/ called');
+  console.log('POST /api/carts/ called with body:', req.body);
   try {
+    const { products } = req.body;
+    if (!Array.isArray(products)) {
+      console.log('Invalid products format');
+      return res.status(400).json({ error: 'Products should be an array' });
+    }
+
+    const validProducts = await readProductsFile();
+    const invalidProducts = products.filter(p => !validProducts.find(vp => vp.id === p.product));
+    
+    if (invalidProducts.length > 0) {
+      console.log('Invalid products:', invalidProducts);
+      return res.status(400).json({ error: 'Some products are invalid' });
+    }
+
     const carts = await readCartsFile();
     const newCart = {
       id: `${Date.now()}${Math.floor(Math.random() * 1000)}`,
-      products: []
+      products: products
     };
 
     carts.push(newCart);

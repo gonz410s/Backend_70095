@@ -1,3 +1,38 @@
 [
-
+  {
+    "id": "1722026886604143",
+    "name": "Juan Pérez",
+    "email": "juan.perez@example.com",
+    "age": 30,
+    "password": "password123",
+    "username": "juanperez",
+    "createdAt": "2024-07-26T20:48:06.604Z"
+  },
+  {
+    "id": "1722026980561147",
+    "name": "Laura Méndez",
+    "email": "laura.mendez@example.com",
+    "age": 28,
+    "password": "passlaura",
+    "username": "lauramendez",
+    "createdAt": "2024-07-26T20:49:40.561Z"
+  },
+  {
+    "id": "1722026994682904",
+    "name": "Ricardo Fernández",
+    "email": "ricardo.fernandez@example.com",
+    "age": 40,
+    "password": "ricardo40",
+    "username": "ricardofernandez",
+    "createdAt": "2024-07-26T20:49:54.682Z"
+  },
+  {
+    "id": "1722027002819891",
+    "name": "Ana Torres",
+    "email": "ana.torres@example.com",
+    "age": 22,
+    "password": "ana22",
+    "username": "anatorres",
+    "createdAt": "2024-07-26T20:50:02.819Z"
+  }
 ]
