@@ -1,63 +1,26 @@
 const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
-const fs = require('fs').promises;
-
-// Inicializar Express
 const app = express();
-const port = 8080;
+const path = require('path');
+const userRoutes = require('./routes/users');
+const cartRoutes = require('./routes/carts');
+const productRoutes = require('./routes/products');
 
-// Middleware para el logging de las solicitudes
-app.use(morgan('combined'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-// Middleware para parsear cuerpos JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Definir rutas de archivos
-const productsFilePath = path.join(__dirname, 'data/products.json');
-const cartsFilePath = path.join(__dirname, 'data/carts.json');
-const usersFilePath = path.join(__dirname, 'data/users.json');
+app.use('/api/users', userRoutes);
+app.use('/api/carts', cartRoutes);
+app.use('/api/products', productRoutes);
 
-// Auxiliar para leer archivos JSON
-const readFile = async (filePath) => {
-  console.log(`Reading file: ${filePath}`);
-  try {
-    const data = await fs.readFile(filePath, 'utf-8');
-    console.log(`File read successfully: ${filePath}`);
-    return JSON.parse(data);
-  } catch (error) {
-    console.error(`Error reading file: ${filePath}`, error);
-    return [];
-  }
-};
-
-// Auxiliar para escribir archivos JSON
-const writeFile = async (filePath, data) => {
-  console.log(`Writing to file: ${filePath}`);
-  try {
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
-    console.log(`File written successfully: ${filePath}`);
-  } catch (error) {
-    console.error(`Error writing to file: ${filePath}`, error);
-  }
-};
-
-// Importar y usar rutas
-const productsRouter = require('./routes/products');
-const cartsRouter = require('./routes/carts');
-const usersRouter = require('./routes/users');
-
-app.use('/api/products', productsRouter);
-app.use('/api/carts', cartsRouter);
-app.use('/api/users', usersRouter);
-
-// Middleware de manejo de errores
-app.use((err, req, res, next) => {
-  console.error('Error occurred:', err.stack);
-  res.status(500).json({ error: 'Something went wrong!' });
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Home' });
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
