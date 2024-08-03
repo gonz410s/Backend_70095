@@ -1,86 +1,17 @@
 [
   {
-    "id": "1722026532623179",
-    "title": "Laptop",
-    "description": "A high performance laptop.",
-    "code": "LPT123",
-    "price": 1200,
-    "status": true,
-    "stock": 10,
-    "category": "Electronics",
-    "thumbnails": [
-      "/images/laptop1.png",
-      "/images/laptop2.png"
-    ]
+    "title": "casita2000",
+    "price": "123",
+    "id": "1722723467234345"
   },
   {
-    "id": "1722026666554344",
-    "title": "Televisor 4K",
-    "description": "Televisor 4K de 55 pulgadas con tecnología HDR.",
-    "code": "TV4K55",
-    "price": 1500,
-    "status": true,
-    "stock": 20,
-    "category": "Electrónica",
-    "thumbnails": [
-      "/images/tv4k1.png",
-      "/images/tv4k2.png"
-    ]
+    "title": "casita2000",
+    "price": "123",
+    "id": "172272346752086"
   },
   {
-    "id": "1722026680748785",
-    "title": "Auriculares Inalámbricos",
-    "description": "Auriculares con cancelación de ruido y batería de larga duración.",
-    "code": "AUD123",
-    "price": 200,
-    "status": true,
-    "stock": 50,
-    "category": "Audio",
-    "thumbnails": [
-      "/images/auriculares1.png",
-      "/images/auriculares2.png"
-    ]
-  },
-  {
-    "id": "1722026689855519",
-    "title": "Smartwatch",
-    "description": "Reloj inteligente con monitor de ritmo cardíaco y GPS.",
-    "code": "SW456",
-    "price": 300,
-    "status": true,
-    "stock": 30,
-    "category": "Accesorios",
-    "thumbnails": [
-      "/images/smartwatch1.png",
-      "/images/smartwatch2.png"
-    ]
-  },
-  {
-    "id": "172202670008586",
-    "title": "Tablet",
-    "description": "Tablet de 10 pulgadas con pantalla táctil y 64GB de almacenamiento.",
-    "code": "TAB789",
-    "price": 400,
-    "status": true,
-    "stock": 15,
-    "category": "Electrónica",
-    "thumbnails": [
-      "/images/tablet1.png",
-      "/images/tablet2.png"
-    ]
-  },
-  {
-    "id": "17220267080005",
-    "title": "Cámara Digital",
-    "description": "Cámara digital de 20MP con zoom óptico de 10x.",
-    "code": "CAM101",
-    "price": 500,
-    "status": true,
-    "stock": 25,
-    "category": "Fotografía",
-    "thumbnails": [
-      "/images/camara1.png",
-      "/images/camara2.png"
-    ]
+    "title": "casita2000",
+    "price": "123",
+    "id": "1722723468239471"
   }
 ]

@@ -34,5 +34,14 @@
     "password": "ana22",
     "username": "anatorres",
     "createdAt": "2024-07-26T20:50:02.819Z"
+  },
+  {
+    "id": "USR-1722622096928501",
+    "name": "1722622096928347",
+    "email": "Juan Pérez2",
+    "age": "juan.perez2@example.com",
+    "password": 30,
+    "username": "password123",
+    "createdAt": "2024-08-02T18:08:16.928Z"
   }
 ]

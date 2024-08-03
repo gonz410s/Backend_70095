@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // Escucha el evento para actualizar la lista de productos
+        socket.on('updateProducts', products => {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+
+            products.forEach(product => {
+                const li = document.createElement('li');
+                li.textContent = `${product.title} - $${product.price}`;
+                
+                // Crear botón de eliminar
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Eliminar';
+                deleteButton.onclick = () => {
+                    socket.emit('deleteProduct', product.id);
+                };
+
+                li.appendChild(deleteButton);
+                productList.appendChild(li);
+            });
+        });
+
+        // Emitir evento de creación de producto
+        function addProduct(event) {
+            event.preventDefault();
+            const title = document.getElementById('title').value;
+            const price = document.getElementById('price').value;
+            socket.emit('createProduct', { title, price });
+        }
+    </script>
+</head>
+<body>
+    <h1>{{title}}</h1>
+
+    <form id="product-form" onsubmit="addProduct(event)">
+        <input type="text" id="title" placeholder="Título" required>
+        <input type="number" id="price" placeholder="Precio" required>
+        <button type="submit">Agregar Producto</button>
+    </form>
+
+    <ul id="product-list">
+        {{#each products}}
+            <li>
+                {{this.title}} - ${{this.price}}
+                <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
+            </li>
+        {{/each}}
+    </ul>
+
+    <script>
+        function deleteProduct(id) {
+            socket.emit('deleteProduct', id);
+        }
+    </script>
+</body>
+</html>
