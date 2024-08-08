@@ -15,7 +15,7 @@
 
             products.forEach(product => {
                 const li = document.createElement('li');
-                li.textContent = `${product.title} - $${product.price}`;
+                li.textContent = `${product.title} - ${product.description} - Código: ${product.code} - $${product.price} - Estado: ${product.status} - Stock: ${product.stock} - Categoría: ${product.category}`;
                 
                 // Crear botón de eliminar
                 const deleteButton = document.createElement('button');
@@ -32,9 +32,17 @@
         // Emitir evento de creación de producto
         function addProduct(event) {
             event.preventDefault();
+
             const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const code = document.getElementById('code').value;
             const price = document.getElementById('price').value;
-            socket.emit('createProduct', { title, price });
+            const status = document.getElementById('status').checked;
+            const stock = document.getElementById('stock').value;
+            const category = document.getElementById('category').value;
+            const thumbnails = document.getElementById('thumbnails').value.split(',');
+
+            socket.emit('createProduct', { title, description, code, price, status, stock, category, thumbnails });
         }
     </script>
 </head>
@@ -42,15 +50,24 @@
     <h1>{{title}}</h1>
 
     <form id="product-form" onsubmit="addProduct(event)">
-        <input type="text" id="title" placeholder="Título" required>
-        <input type="number" id="price" placeholder="Precio" required>
+        <input type="text" id="title" placeholder="Título" required><br>
+        <input type="text" id="description" placeholder="Descripción" required><br>
+        <input type="text" id="code" placeholder="Código" required><br>
+        <input type="number" id="price" placeholder="Precio" required><br>
+        <label>
+            <input type="checkbox" id="status">
+            Estado (Activo/No Activo)
+        </label><br>
+        <input type="number" id="stock" placeholder="Stock" required><br>
+        <input type="text" id="category" placeholder="Categoría" required><br>
+        <input type="text" id="thumbnails" placeholder="Thumbnails (separados por comas)"><br>
         <button type="submit">Agregar Producto</button>
     </form>
 
     <ul id="product-list">
         {{#each products}}
             <li>
-                {{this.title}} - ${{this.price}}
+                {{this.title}} - {{this.description}} - Código: {{this.code}} - ${{this.price}} - Estado: {{this.status}} - Stock: {{this.stock}} - Categoría: {{this.category}}
                 <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
             </li>
         {{/each}}
