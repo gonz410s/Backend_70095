@@ -8,8 +8,13 @@ const { getUserById } = require('../services/userService');
 // Crear un nuevo carrito
 router.post('/', async (req, res) => {
   const { userId, products } = req.body;
+
   if (!userId) {
     return res.status(400).json({ error: 'User ID is required' });
+  }
+
+  if (!Array.isArray(products) || products.some(p => !p.productId || !p.quantity)) {
+    return res.status(400).json({ error: 'Products must be an array of { productId, quantity } objects' });
   }
 
   try {
@@ -18,7 +23,7 @@ router.post('/', async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    const newCart = new Cart(`${Date.now()}${Math.floor(Math.random() * 1000)}`, userId, products || []);
+    const newCart = new Cart(userId, products);
     const createdCart = await createCart(newCart);
     res.status(201).json(createdCart);
   } catch (error) {
@@ -58,7 +63,7 @@ router.post('/:cid/product/:pid', async (req, res) => {
       return res.status(404).json({ error: 'Product not found' });
     }
 
-    const updatedCart = await addProductToCart(req.params.cid, { product: req.params.pid, quantity: 1 });
+    const updatedCart = await addProductToCart(req.params.cid, { productId: req.params.pid, quantity: 1 });
     res.status(201).json(updatedCart);
   } catch (error) {
     res.status(500).json({ error: 'Failed to add product to cart' });

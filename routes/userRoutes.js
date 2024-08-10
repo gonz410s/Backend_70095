@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const { createUser, getUserById, getAllUsers } = require('../services/userService');
 
+// Crear un nuevo usuario
 router.post('/', async (req, res) => {
   const { name, email, age, password, username } = req.body;
 
@@ -19,6 +20,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Obtener usuario por ID
 router.get('/:uid', async (req, res) => {
   try {
     const user = await getUserById(req.params.uid);
@@ -32,6 +34,7 @@ router.get('/:uid', async (req, res) => {
   }
 });
 
+// Obtener todos los usuarios
 router.get('/', async (req, res) => {
   try {
     const users = await getAllUsers();

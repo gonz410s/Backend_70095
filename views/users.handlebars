@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // Actualizar lista de usuarios
+        socket.on('updateUsers', users => {
+            const userList = document.getElementById('user-list');
+            userList.innerHTML = '';
+
+            users.forEach(user => {
+                const li = document.createElement('li');
+                li.textContent = `${user.name} - ${user.email}`;
+                
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Eliminar';
+                deleteButton.onclick = () => {
+                    socket.emit('deleteUser', user.id);
+                };
+
+                li.appendChild(deleteButton);
+                userList.appendChild(li);
+            });
+        });
+
+        // Emitir evento de creación de usuario
+        function addUser(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            socket.emit('createUser', { name, email });
+        }
+    </script>
+</head>
+<body>
+    <h1>{{title}}</h1>
+
+    <form id="user-form" onsubmit="addUser(event)">
+        <input type="text" id="name" placeholder="Nombre" required><br>
+        <input type="email" id="email" placeholder="Correo" required><br>
+        <button type="submit">Agregar Usuario</button>
+    </form>
+
+    <ul id="user-list">
+        {{#each users}}
+            <li>
+                {{this.name}} - {{this.email}}
+                <button onclick="deleteUser('{{this.id}}')">Eliminar</button>
+            </li>
+        {{/each}}
+    </ul>
+
+    <script>
+        function deleteUser(id) {
+            socket.emit('deleteUser', id);
+        }
+    </script>
+</body>
+</html>

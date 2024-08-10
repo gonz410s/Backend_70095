@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "id": "PRD-1723300639210752",
+    "title": "Tablet",
+    "description": "Tablet de 10 pulgadas con pantalla táctil y 64GB de almacenamiento.",
+    "code": "TAB789",
+    "price": 400,
+    "status": true,
+    "stock": 15,
+    "category": "Electrónica",
+    "thumbnails": [
+      "/images/tablet1.png",
+      "/images/tablet2.png"
+    ],
+    "createdAt": "2024-08-10T14:37:19.210Z"
+  },
+  {
+    "id": "PRD-1723300648458369",
+    "title": "Cámara Digital",
+    "description": "Cámara digital de 20MP con zoom óptico de 10x.",
+    "code": "CAM101",
+    "price": 500,
+    "status": true,
+    "stock": 25,
+    "category": "Fotografía",
+    "thumbnails": [
+      "/images/camara1.png",
+      "/images/camara2.png"
+    ],
+    "createdAt": "2024-08-10T14:37:28.458Z"
+  },
+  {
+    "title": "Cocina",
+    "description": "Cocina a gas",
+    "code": "12334444",
+    "price": "355",
+    "status": true,
+    "stock": "23",
+    "category": "Electrodomesticos",
+    "thumbnails": [
+      ""
+    ],
+    "id": "PRD-1723301149545681"
+  },
+  {
+    "title": "Gonza",
+    "description": "mimuneco",
+    "code": "12344444",
+    "price": "1000",
+    "status": true,
+    "stock": "10",
+    "category": "Juguete",
+    "thumbnails": [
+      ""
+    ],
+    "id": "PRD-1723308511340675"
+  }
+]

@@ -4,9 +4,9 @@ const { create } = require('express-handlebars');
 const http = require('http');
 const socketIo = require('socket.io');
 const fs = require('fs').promises;
-const userRoutes = require('./routes/users');
-const cartRoutes = require('./routes/carts');
-const productRoutes = require('./routes/products');
+const userRoutes = require('./routes/userRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+const productRoutes = require('./routes/productRoutes');
 const viewsRoutes = require('./routes/views.routes');
 
 const app = express();
@@ -27,59 +27,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Rutas API
 app.use('/api/users', userRoutes);
-app.use('/api/carts', cartRoutes);
+app.use('/carts', cartRoutes);
 app.use('/api/products', productRoutes);
+
+// Rutas de vistas
 app.use('/', viewsRoutes);
 
-// Ruta del archivo de productos
-const productsFilePath = path.join(__dirname, 'data', 'products.json');
-
-async function readProducts() {
-    try {
-        const data = await fs.readFile(productsFilePath, 'utf-8');
-        return JSON.parse(data);
-    } catch (error) {
-        console.error('Error reading products file', error);
-        return [];
-    }
-}
-
-io.on('connection', (socket) => {
-    console.log('New client connected');
-
-    // Enviar la lista de productos al nuevo cliente
-    readProducts().then(products => {
-        socket.emit('updateProducts', products);
-    });
-
-    socket.on('createProduct', async (product) => {
-        try {
-            let products = await readProducts();
-            product.id = `${Date.now()}${Math.floor(Math.random() * 1000)}`;
-            products.push(product);
-            await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2));
-            io.emit('updateProducts', products);
-        } catch (error) {
-            console.error('Error creating product', error);
-        }
-    });
-
-    socket.on('deleteProduct', async (productId) => {
-        try {
-            let products = await readProducts();
-            products = products.filter(p => p.id !== productId);
-            await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2));
-            io.emit('updateProducts', products);
-        } catch (error) {
-            console.error('Error deleting product', error);
-        }
-    });
-
-    socket.on('disconnect', () => {
-        console.log('Client disconnected');
-    });
+// Middleware para manejar errores 404
+app.use((req, res, next) => {
+    res.status(404).send('Route not found');
 });
+
+// Middleware para manejar errores generales
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+        console.error('Bad JSON format:', err);
+        return res.status(400).send({ message: 'Invalid JSON' }); // Bad request
+    }
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
+require('./services/sockethandlers')(io);
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {

@@ -1,9 +1,8 @@
-// Cart.js
 class Cart {
   constructor(userId, products = []) {
     this.id = `CRT-${Date.now()}${Math.floor(Math.random() * 1000)}`;
     this.userId = userId;
-    this.products = products;
+    this.products = products.map(p => ({ productId: p.productId, quantity: p.quantity })); // Asegurarse de que la estructura sea correcta
     this.createdAt = new Date();
   }
 
