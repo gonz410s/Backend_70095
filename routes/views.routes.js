@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs').promises;
-const path = require('path');
-
-const productsFilePath = path.join(__dirname, '../data/products.json');
-const cartsFilePath = path.join(__dirname, '../data/carts.json');
+const Product = require('../models/product');
+const Cart = require('../models/cart');
 
 // Ruta para la vista principal
 router.get('/', (req, res) => {
@@ -14,23 +11,38 @@ router.get('/', (req, res) => {
 // Ruta para la vista de productos en tiempo real
 router.get('/realtimeproducts', async (req, res) => {
     try {
-        const data = await fs.readFile(productsFilePath, 'utf-8');
-        const products = JSON.parse(data);
+        const products = await Product.find();
         res.render('realTimeProducts', { title: 'Productos en Tiempo Real', products });
     } catch (error) {
-        console.error('Error reading products file', error);
+        console.error('Error reading products from database', error);
         res.status(500).send('Error loading products');
     }
 });
 
 // Ruta para la vista de productos normal
 router.get('/products', async (req, res) => {
+    const { limit = 10, page = 1, sort = '', query = '' } = req.query;
+
     try {
-        const data = await fs.readFile(productsFilePath, 'utf-8');
-        const products = JSON.parse(data);
-        res.render('products', { title: 'Lista de Productos', products });
+        const sortOrder = sort === 'asc' ? 1 : -1;
+        const products = await Product.find({ title: new RegExp(query, 'i') })
+            .sort({ price: sortOrder })
+            .limit(parseInt(limit))
+            .skip((parseInt(page) - 1) * parseInt(limit));
+
+        const totalProducts = await Product.countDocuments({ title: new RegExp(query, 'i') });
+
+        res.render('products', {
+            title: 'Lista de Productos',
+            products,
+            pagination: {
+                limit: parseInt(limit),
+                page: parseInt(page),
+                totalPages: Math.ceil(totalProducts / parseInt(limit))
+            }
+        });
     } catch (error) {
-        console.error('Error reading products file', error);
+        console.error('Error reading products from database', error);
         res.status(500).send('Error loading products');
     }
 });
@@ -38,11 +50,10 @@ router.get('/products', async (req, res) => {
 // Ruta para la vista de carritos
 router.get('/carts', async (req, res) => {
     try {
-        const data = await fs.readFile(cartsFilePath, 'utf-8');
-        const carts = JSON.parse(data);
+        const carts = await Cart.find().populate('products.productId');
         res.render('carts', { title: 'Lista de Carritos', carts });
     } catch (error) {
-        console.error('Error reading carts file', error);
+        console.error('Error reading carts from database', error);
         res.status(500).send('Error loading carts');
     }
 });
@@ -50,16 +61,14 @@ router.get('/carts', async (req, res) => {
 // Ruta para la vista de un carrito específico
 router.get('/carts/:cid', async (req, res) => {
     try {
-        const data = await fs.readFile(cartsFilePath, 'utf-8');
-        const carts = JSON.parse(data);
-        const cart = carts.find(c => c.id === req.params.cid);
+        const cart = await Cart.findById(req.params.cid).populate('products.productId');
         if (cart) {
-            res.render('cartDetails', { title: `Carrito ${cart.id}`, cart });
+            res.render('cartDetails', { title: `Carrito ${cart._id}`, cart });
         } else {
             res.status(404).send('Cart not found');
         }
     } catch (error) {
-        console.error('Error reading carts file', error);
+        console.error('Error reading cart from database', error);
         res.status(500).send('Error loading cart');
     }
 });

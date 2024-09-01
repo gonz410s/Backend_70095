@@ -19,6 +19,12 @@ const hbs = create({
     layoutsDir: path.join(__dirname, 'views', 'layouts')
 });
 
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/apiDB')
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Could not connect to MongoDB', err));
+
 app.engine('.handlebars', hbs.engine);
 app.set('view engine', '.handlebars');
 app.set('views', path.join(__dirname, 'views'));
@@ -50,7 +56,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
-require('./services/sockethandlers')(io);
+require('./sockets/sockethandlers')(io);
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {

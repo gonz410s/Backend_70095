@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const { createUser, getUserById, getAllUsers } = require('../services/userService');
 
 // Crear un nuevo usuario
 router.post('/', async (req, res) => {
@@ -11,9 +10,9 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const newUser = new User(`${Date.now()}${Math.floor(Math.random() * 1000)}`, name, email, age, password, username);
   try {
-    const createdUser = await createUser(newUser);
+    const newUser = new User({ name, email, age, password, username });
+    const createdUser = await newUser.save();
     res.status(201).json(createdUser);
   } catch (error) {
     res.status(500).json({ error: 'Failed to create user' });
@@ -23,7 +22,7 @@ router.post('/', async (req, res) => {
 // Obtener usuario por ID
 router.get('/:uid', async (req, res) => {
   try {
-    const user = await getUserById(req.params.uid);
+    const user = await User.findById(req.params.uid);
     if (user) {
       res.json(user);
     } else {
@@ -37,7 +36,7 @@ router.get('/:uid', async (req, res) => {
 // Obtener todos los usuarios
 router.get('/', async (req, res) => {
   try {
-    const users = await getAllUsers();
+    const users = await User.find();
     res.json(users);
   } catch (error) {
     res.status(500).json({ error: 'Failed to get users' });

@@ -1,15 +1,15 @@
-// User.js
-class User {
-  constructor(name, email, age, password, username) {
-    this.id = `USR-${Date.now()}${Math.floor(Math.random() * 1000)}`;
-    this.name = name;
-    this.email = email;
-    this.age = age;
-    this.password = password;
-    this.username = username;
-    this.createdAt = new Date();
-    console.log('User created:', this);
-  }
-}
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+const userSchema = new Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    age: { type: Number, required: true },
+    password: { type: String, required: true },
+    username: { type: String, required: true, unique: true },
+    createdAt: { type: Date, default: Date.now }
+});
+
+const User = mongoose.model('user', userSchema);
 
 module.exports = User;

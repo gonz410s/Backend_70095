@@ -1,64 +1,16 @@
-const fs = require('fs').promises;
-const path = require('path');
+// controllers/cartController.js
+const Cart = require('../models/cart');
 
-const cartsFilePath = path.join(__dirname, '../data/carts.json');
-
-const readCartsFile = async () => {
+exports.getCartById = async (req, res) => {
   try {
-    const data = await fs.readFile(cartsFilePath, 'utf-8');
-    return JSON.parse(data);
+    const cart = await Cart.findById(req.params.cid).populate('products.productId');
+    if (cart) {
+      res.render('cart', { title: 'Cart Details', cart });
+    } else {
+      res.status(404).send('Cart not found');
+    }
   } catch (error) {
-    console.error('Error reading carts file', error);
-    return [];
+    console.error('Error fetching cart:', error);
+    res.status(500).send('Server error');
   }
-};
-
-const writeCartsFile = async (data) => {
-  try {
-    await fs.writeFile(cartsFilePath, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Error writing carts file', error);
-  }
-};
-
-const createCart = async (cart) => {
-  const carts = await readCartsFile();
-  carts.push(cart);
-  await writeCartsFile(carts);
-  return cart;
-};
-
-const getCartById = async (id) => {
-  const carts = await readCartsFile();
-  return carts.find(cart => cart.id === id);
-};
-
-const getCartsByUserId = async (userId) => {
-  const carts = await readCartsFile();
-  return carts.filter(cart => cart.userId === userId);
-};
-
-const addProductToCart = async (cartId, product) => {
-  const carts = await readCartsFile();
-  const cart = carts.find(c => c.id === cartId);
-  if (!cart) {
-    throw new Error('Cart not found');
-  }
-
-  const productIndex = cart.products.findIndex(p => p.productId === product.productId);
-  if (productIndex !== -1) {
-    cart.products[productIndex].quantity += product.quantity;
-  } else {
-    cart.products.push(product);
-  }
-
-  await writeCartsFile(carts);
-  return cart;
-};
-
-module.exports = {
-  createCart,
-  getCartById,
-  getCartsByUserId,
-  addProductToCart,
 };

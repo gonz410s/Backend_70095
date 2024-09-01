@@ -8,7 +8,6 @@
     <script>
         const socket = io();
 
-        // Escucha el evento para actualizar la lista de productos
         socket.on('updateProducts', products => {
             const productList = document.getElementById('product-list');
             productList.innerHTML = '';
@@ -16,8 +15,7 @@
             products.forEach(product => {
                 const li = document.createElement('li');
                 li.textContent = `${product.title} - ${product.description} - Código: ${product.code} - $${product.price} - Estado: ${product.status} - Stock: ${product.stock} - Categoría: ${product.category}`;
-                
-                // Crear botón de eliminar
+
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Eliminar';
                 deleteButton.onclick = () => {
@@ -29,7 +27,6 @@
             });
         });
 
-        // Emitir evento de creación de producto
         function addProduct(event) {
             event.preventDefault();
 

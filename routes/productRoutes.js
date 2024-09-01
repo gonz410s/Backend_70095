@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../models/Product');
-const { createProduct, getProductById } = require('../services/productService');
+const Product = require('../models/product');
 
 // Crear un nuevo producto
 router.post('/', async (req, res) => {
@@ -11,9 +10,9 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const newProduct = new Product(title, description, code, price, status, stock, category, thumbnails);
   try {
-    const createdProduct = await createProduct(newProduct);
+    const newProduct = new Product({ title, description, code, price, status, stock, category, thumbnails });
+    const createdProduct = await newProduct.save();
     res.status(201).json(createdProduct);
   } catch (error) {
     res.status(500).json({ error: 'Failed to create product' });

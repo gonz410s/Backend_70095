@@ -6,9 +6,11 @@
 </head>
 <body>
     <h1>{{title}}</h1>
+    <h2>Cart ID: {{cart.id}}</h2>
+    <p>User ID: {{cart.userId}}</p>
     <ul>
-        {{#each carts}}
-            <li><a href="/carts/{{this.id}}">Cart ID: {{this.id}}</a></li>
+        {{#each cart.products}}
+            <li>Product ID: {{this.productId}}, Quantity: {{this.quantity}}</li>
         {{/each}}
     </ul>
 </body>
