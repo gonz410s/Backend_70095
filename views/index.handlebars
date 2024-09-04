@@ -1,20 +1,53 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Productos</title>
 </head>
 <body>
-    <h1>Bienvenido a la Página Principal</h1>
+    <h1>Productos</h1>
 
-    <nav>
-        <ul>
-            <li><a href="/products">Ver Productos</a></li>
-            <li><a href="/realtimeproducts">Productos en Tiempo Real</a></li>
-            <li><a href="/api/users">Usuarios</a></li>
-            <li><a href="/carts">Carritos</a></li>
-        </ul>
-    </nav>
+    <!-- Mostrar productos -->
+    {{#each products}}
+    <div class="product">
+        <h2>{{this.title}}</h2>
+        <p>Price: ${{this.price}}</p>
+        <p>Status: {{#if this.status}}Available{{else}}Not Available{{/if}}</p>
+        <p>Stock: {{this.stock}}</p>
+        <p>Category: {{this.category}}</p>
+        <a href="/products/{{this._id}}">View Details</a>
+        <button onclick="addToCart('{{this._id}}')">Add to Cart</button>
+    </div>
+    {{/each}}
+
+    <!-- Paginación -->
+    <div class="pagination">
+        {{#if hasPrevPage}}
+            <a href="/products?limit={{limit}}&page={{prevPage}}">Previous</a>
+        {{/if}}
+        {{#if hasNextPage}}
+            <a href="/products?limit={{limit}}&page={{nextPage}}">Next</a>
+        {{/if}}
+    </div>
+
+    <script>
+        async function addToCart(productId) {
+            try {
+                const response = await fetch(`/api/products/add-to-cart/${productId}`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                if (data.status === 'success') {
+                    alert('Producto agregado al carrito');
+                } else {
+                    alert('Error al agregar producto');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al agregar producto');
+            }
+        }
+    </script>
 </body>
 </html>

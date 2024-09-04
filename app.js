@@ -1,9 +1,9 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const path = require('path');
-const { create } = require('express-handlebars');
 const http = require('http');
 const socketIo = require('socket.io');
-const fs = require('fs').promises;
+const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const productRoutes = require('./routes/productRoutes');
@@ -13,20 +13,26 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-const hbs = create({
+const hbs = exphbs.create({
     extname: '.handlebars',
     defaultLayout: 'main',
-    layoutsDir: path.join(__dirname, 'views', 'layouts')
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true
+    }
 });
 
-const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/apiDB')
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Could not connect to MongoDB', err));
+mongoose.connect('mongodb://localhost:27017/apiDB', {})
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch(err => {
+        console.error('Failed to connect to MongoDB', err);
+    });
 
-app.engine('.handlebars', hbs.engine);
-app.set('view engine', '.handlebars');
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json());
@@ -35,7 +41,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Rutas API
 app.use('/api/users', userRoutes);
-app.use('/carts', cartRoutes);
+app.use('/api/carts', cartRoutes);
 app.use('/api/products', productRoutes);
 
 // Rutas de vistas
@@ -50,7 +56,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
         console.error('Bad JSON format:', err);
-        return res.status(400).send({ message: 'Invalid JSON' }); // Bad request
+        return res.status(400).send({ message: 'Invalid JSON' });
     }
     console.error(err.stack);
     res.status(500).send('Something broke!');
