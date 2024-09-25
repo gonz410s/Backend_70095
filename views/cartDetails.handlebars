@@ -2,16 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
 </head>
 <body>
     <h1>{{title}}</h1>
 
+    <h2>Carrito ID: {{cart._id}}</h2>
+    <p>User ID: {{cart.userId.id}}</p>
+    <p>User Name: {{cart.userId.name}}</p>
+    <p>User Email: {{cart.userId.email}}</p>
+
     {{#if cart.products.length}}
         <ul>
             {{#each cart.products}}
                 <li>
-                    <h2>{{this.product.title}}</h2>
+                    <h2>Producto: {{this.product.title}}</h2>
                     <p>Price: ${{this.product.price}}</p>
                     <p>Quantity: {{this.quantity}}</p>
                 </li>

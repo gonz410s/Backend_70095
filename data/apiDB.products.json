@@ -1,0 +1,826 @@
+[{
+  "_id": {
+    "$oid": "66d23f3d987da12e928b9584"
+  },
+  "id:custom": "PRD-1723300639210752",
+  "title": "Tablet",
+  "description": "Tablet de 10 pulgadas con pantalla táctil y 64GB de almacenamiento.",
+  "code": "TAB789",
+  "price": 400,
+  "status": true,
+  "stock": 15,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/tablet1.png",
+    "/images/tablet2.png"
+  ],
+  "createdAt": "2024-08-10T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "66d23f3d987da12e928b9585"
+  },
+  "id:custom": "PRD-1723300648458369",
+  "title": "Cámara Digital",
+  "description": "Cámara digital de 20MP con zoom óptico de 10x.",
+  "code": "CAM101",
+  "price": 500,
+  "status": true,
+  "stock": 25,
+  "category": "Fotografía",
+  "thumbnails": [
+    "/images/camara1.png",
+    "/images/camara2.png"
+  ],
+  "createdAt": "2024-08-10T14:37:28.458Z"
+},
+{
+  "_id": {
+    "$oid": "66d23f3d987da12e928b9586"
+  },
+  "id:custom": "PRD-1723301149545681",
+  "title": "Cocina",
+  "description": "Cocina a gas",
+  "code": "12334444",
+  "price": 355,
+  "status": true,
+  "stock": 23,
+  "category": "Electrodomesticos",
+  "thumbnails": [
+    ""
+  ]
+},
+{
+  "_id": {
+    "$oid": "66d23f3d987da12e928b9587"
+  },
+  "id:custom": "PRD-1723308511340675",
+  "title": "Gonza",
+  "description": "mimuneco",
+  "code": "12344444",
+  "price": 1000,
+  "status": true,
+  "stock": 10,
+  "category": "Juguete",
+  "thumbnails": [
+    ""
+  ]
+},
+{
+  "_id": {
+    "$oid": "66d240f7a2ec5c8e5068bc4f"
+  },
+  "id:custom": "PRD-1723300639210754",
+  "title": "dasd",
+  "description": "13213",
+  "code": "seqeqw",
+  "price": 131231,
+  "status": true,
+  "stock": 132123,
+  "category": "1231",
+  "thumbnails": [
+    "3213"
+  ],
+  "createdAt": {
+    "$date": "2024-08-30T22:00:23.424Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9585"
+  },
+  "id:custom": "PRD-1723300639210753",
+  "title": "Smartphone",
+  "description": "Smartphone de 6.5 pulgadas con 128GB de almacenamiento.",
+  "code": "SMP123",
+  "price": 600,
+  "status": true,
+  "stock": 25,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/smartphone1.png",
+    "/images/smartphone2.png"
+  ],
+  "createdAt": "2024-08-11T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9586"
+  },
+  "id:custom": "PRD-1723300639210754",
+  "title": "Laptop",
+  "description": "Laptop con procesador i7, 16GB RAM y 512GB SSD.",
+  "code": "LPT456",
+  "price": 1200,
+  "status": true,
+  "stock": 10,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/laptop1.png",
+    "/images/laptop2.png"
+  ],
+  "createdAt": "2024-08-12T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9587"
+  },
+  "id:custom": "PRD-1723300639210755",
+  "title": "Auriculares",
+  "description": "Auriculares inalámbricos con cancelación de ruido.",
+  "code": "AUR789",
+  "price": 150,
+  "status": true,
+  "stock": 50,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/auriculares1.png",
+    "/images/auriculares2.png"
+  ],
+  "createdAt": "2024-08-13T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9588"
+  },
+  "id:custom": "PRD-1723300639210756",
+  "title": "Smartwatch",
+  "description": "Smartwatch con monitoreo de frecuencia cardíaca y GPS.",
+  "code": "SWT101",
+  "price": 250,
+  "status": true,
+  "stock": 30,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/smartwatch1.png",
+    "/images/smartwatch2.png"
+  ],
+  "createdAt": "2024-08-14T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9589"
+  },
+  "id:custom": "PRD-1723300639210757",
+  "title": "Televisor 4K",
+  "description": "Televisor 4K de 55 pulgadas con HDR.",
+  "code": "TV4K99",
+  "price": 800,
+  "status": true,
+  "stock": 5,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/televisor1.png",
+    "/images/televisor2.png"
+  ],
+  "createdAt": "2024-08-15T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b958a"
+  },
+  "id:custom": "PRD-1723300639210758",
+  "title": "Cámara DSLR",
+  "description": "Cámara DSLR con lente de 18-55mm.",
+  "code": "CAM202",
+  "price": 900,
+  "status": true,
+  "stock": 8,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/camara1.png",
+    "/images/camara2.png"
+  ],
+  "createdAt": "2024-08-16T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b958c"
+  },
+  "id:custom": "PRD-1723300639210760",
+  "title": "Impresora",
+  "description": "Impresora láser multifunción con conectividad Wi-Fi.",
+  "code": "IMP303",
+  "price": 300,
+  "status": true,
+  "stock": 12,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/impresora1.png",
+    "/images/impresora2.png"
+  ],
+  "createdAt": "2024-08-18T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b958d"
+  },
+  "id:custom": "PRD-1723300639210761",
+  "title": "Altavoces Bluetooth",
+  "description": "Altavoces Bluetooth con batería de larga duración.",
+  "code": "ALT404",
+  "price": 120,
+  "status": true,
+  "stock": 20,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/altavoces1.png",
+    "/images/altavoces2.png"
+  ],
+  "createdAt": "2024-08-19T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b958e"
+  },
+  "id:custom": "PRD-1723300639210762",
+  "title": "Teclado Mecánico",
+  "description": "Teclado mecánico con retroiluminación RGB.",
+  "code": "TECL505",
+  "price": 80,
+  "status": true,
+  "stock": 40,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/teclado1.png",
+    "/images/teclado2.png"
+  ],
+  "createdAt": "2024-08-20T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b958f"
+  },
+  "id:custom": "PRD-1723300639210763",
+  "title": "Raton Gaming",
+  "description": "Ratón gaming con ajuste de DPI y retroiluminación.",
+  "code": "RAT606",
+  "price": 90,
+  "status": true,
+  "stock": 22,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/raton1.png",
+    "/images/raton2.png"
+  ],
+  "createdAt": "2024-08-21T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9590"
+  },
+  "id:custom": "PRD-1723300639210764",
+  "title": "Monitor",
+  "description": "Monitor de 27 pulgadas con resolución Full HD.",
+  "code": "MON707",
+  "price": 220,
+  "status": true,
+  "stock": 7,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/monitor1.png",
+    "/images/monitor2.png"
+  ],
+  "createdAt": "2024-08-22T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9591"
+  },
+  "id:custom": "PRD-1723300639210765",
+  "title": "Cámara de Seguridad",
+  "description": "Cámara de seguridad con visión nocturna y conectividad Wi-Fi.",
+  "code": "CAM808",
+  "price": 350,
+  "status": true,
+  "stock": 6,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/camara_seguridad1.png",
+    "/images/camara_seguridad2.png"
+  ],
+  "createdAt": "2024-08-23T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9592"
+  },
+  "id:custom": "PRD-1723300639210766",
+  "title": "Cargador Rápido",
+  "description": "Cargador rápido para dispositivos móviles con cable USB-C.",
+  "code": "CAR909",
+  "price": 25,
+  "status": true,
+  "stock": 40,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/cargador1.png",
+    "/images/cargador2.png"
+  ],
+  "createdAt": "2024-08-24T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9593"
+  },
+  "id:custom": "PRD-1723300639210767",
+  "title": "Disco Duro Externo",
+  "description": "Disco duro externo de 1TB con USB 3.0.",
+  "code": "DIS010",
+  "price": 100,
+  "status": true,
+  "stock": 15,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/disco_duro1.png",
+    "/images/disco_duro2.png"
+  ],
+  "createdAt": "2024-08-25T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9594"
+  },
+  "id:custom": "PRD-1723300639210768",
+  "title": "Proyector",
+  "description": "Proyector Full HD para presentaciones y cine en casa.",
+  "code": "PRO111",
+  "price": 450,
+  "status": true,
+  "stock": 9,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/proyector1.png",
+    "/images/proyector2.png"
+  ],
+  "createdAt": "2024-08-26T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9595"
+  },
+  "id:custom": "PRD-1723300639210769",
+  "title": "Router Wi-Fi",
+  "description": "Router Wi-Fi con soporte para bandas duales y alta velocidad.",
+  "code": "ROU121",
+  "price": 70,
+  "status": true,
+  "stock": 20,
+  "category": "Electrónica",
+  "thumbnails": [
+    "/images/router1.png",
+    "/images/router2.png"
+  ],
+  "createdAt": "2024-08-27T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9596"
+  },
+  "id:custom": "PRD-1723300639210770",
+  "title": "Teclado Inalámbrico",
+  "description": "Teclado inalámbrico con conexión Bluetooth y retroiluminación.",
+  "code": "TECL232",
+  "price": 95,
+  "status": true,
+  "stock": 25,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/teclado_inalambrico1.png",
+    "/images/teclado_inalambrico2.png"
+  ],
+  "createdAt": "2024-08-28T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9597"
+  },
+  "id:custom": "PRD-1723300639210771",
+  "title": "Disco SSD",
+  "description": "Disco SSD de 500GB para mejorar el rendimiento del sistema.",
+  "code": "SSD343",
+  "price": 200,
+  "status": true,
+  "stock": 12,
+  "category": "Accesorios",
+  "thumbnails": [
+    "/images/disco_ssd1.png",
+    "/images/disco_ssd2.png"
+  ],
+  "createdAt": "2024-08-29T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9598"
+  },
+  "id:custom": "PRD-1723300639210772",
+  "title": "Lámpara LED",
+  "description": "Lámpara LED regulable con control remoto.",
+  "code": "LAM454",
+  "price": 35,
+  "status": true,
+  "stock": 30,
+  "category": "Hogar",
+  "thumbnails": [
+    "/images/lampara1.png",
+    "/images/lampara2.png"
+  ],
+  "createdAt": "2024-08-30T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b9599"
+  },
+  "id:custom": "PRD-1723300639210773",
+  "title": "Aspiradora",
+  "description": "Aspiradora vertical con filtro HEPA y bolsa de gran capacidad.",
+  "code": "ASP565",
+  "price": 180,
+  "status": true,
+  "stock": 5,
+  "category": "Hogar",
+  "thumbnails": [
+    "/images/aspiradora1.png",
+    "/images/aspiradora2.png"
+  ],
+  "createdAt": "2024-08-31T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b959a"
+  },
+  "id:custom": "PRD-1723300639210774",
+  "title": "Horno Microondas",
+  "description": "Horno microondas con función de grill y 1000W de potencia.",
+  "code": "HOR676",
+  "price": 220,
+  "status": true,
+  "stock": 8,
+  "category": "Hogar",
+  "thumbnails": [
+    "/images/microondas1.png",
+    "/images/microondas2.png"
+  ],
+  "createdAt": "2024-09-01T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b959b"
+  },
+  "id:custom": "PRD-1723300639210775",
+  "title": "Batidora",
+  "description": "Batidora de mano con múltiples velocidades y accesorios.",
+  "code": "BAT787",
+  "price": 75,
+  "status": true,
+  "stock": 18,
+  "category": "Hogar",
+  "thumbnails": [
+    "/images/batidora1.png",
+    "/images/batidora2.png"
+  ],
+  "createdAt": "2024-09-02T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b959c"
+  },
+  "id:custom": "PRD-1723300639210776",
+  "title": "Plancha",
+  "description": "Plancha de vapor con suela antiadherente.",
+  "code": "PLN898",
+  "price": 55,
+  "status": true,
+  "stock": 22,
+  "category": "Hogar",
+  "thumbnails": [
+    "/images/plancha1.png",
+    "/images/plancha2.png"
+  ],
+  "createdAt": "2024-09-03T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95a2"
+  },
+  "id:custom": "PRD-1723300639210782",
+  "title": "Camisa de Algodón",
+  "description": "Camisa de algodón con diseño clásico y botones frontales.",
+  "code": "CAM123",
+  "price": 40,
+  "status": true,
+  "stock": 30,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/camisa_algodon1.png",
+    "/images/camisa_algodon2.png"
+  ],
+  "createdAt": "2024-09-04T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95a3"
+  },
+  "id:custom": "PRD-1723300639210783",
+  "title": "Vestido de Noche",
+  "description": "Vestido elegante para ocasiones especiales con detalles de encaje.",
+  "code": "VES456",
+  "price": 120,
+  "status": true,
+  "stock": 15,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/vestido_noche1.png",
+    "/images/vestido_noche2.png"
+  ],
+  "createdAt": "2024-09-05T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95a4"
+  },
+  "id:custom": "PRD-1723300639210784",
+  "title": "Chaqueta de Cuero",
+  "description": "Chaqueta de cuero genuino con diseño moderno y cierre frontal.",
+  "code": "CHA789",
+  "price": 200,
+  "status": true,
+  "stock": 10,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/chaqueta_cuero1.png",
+    "/images/chaqueta_cuero2.png"
+  ],
+  "createdAt": "2024-09-06T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95a5"
+  },
+  "id:custom": "PRD-1723300639210785",
+  "title": "Zapatos de Cuero",
+  "description": "Zapatos de cuero para hombres con acabado pulido y cómodo.",
+  "code": "ZAP010",
+  "price": 150,
+  "status": true,
+  "stock": 20,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/zapatos_cuero1.png",
+    "/images/zapatos_cuero2.png"
+  ],
+  "createdAt": "2024-09-07T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95a6"
+  },
+  "id:custom": "PRD-1723300639210786",
+  "title": "Reloj de Pulsera",
+  "description": "Reloj de pulsera elegante con correa de acero inoxidable y esfera clásica.",
+  "code": "REL112",
+  "price": 180,
+  "status": true,
+  "stock": 25,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/reloj_pulsera1.png",
+    "/images/reloj_pulsera2.png"
+  ],
+  "createdAt": "2024-09-08T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95a7"
+  },
+  "id:custom": "PRD-1723300639210787",
+  "title": "Gafas de Sol",
+  "description": "Gafas de sol con protección UV y diseño moderno.",
+  "code": "GAF234",
+  "price": 60,
+  "status": true,
+  "stock": 40,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/gafas_sol1.png",
+    "/images/gafas_sol2.png"
+  ],
+  "createdAt": "2024-09-09T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95a8"
+  },
+  "id:custom": "PRD-1723300639210788",
+  "title": "Bufanda de Lana",
+  "description": "Bufanda de lana suave y cálida, ideal para el invierno.",
+  "code": "BUF345",
+  "price": 35,
+  "status": true,
+  "stock": 50,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/bufanda_lana1.png",
+    "/images/bufanda_lana2.png"
+  ],
+  "createdAt": "2024-09-10T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95a9"
+  },
+  "id:custom": "PRD-1723300639210789",
+  "title": "Cinturón de Cuero",
+  "description": "Cinturón de cuero con hebilla metálica ajustable.",
+  "code": "CIN456",
+  "price": 45,
+  "status": true,
+  "stock": 35,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/cinturon_cuero1.png",
+    "/images/cinturon_cuero2.png"
+  ],
+  "createdAt": "2024-09-11T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95aa"
+  },
+  "id:custom": "PRD-1723300639210790",
+  "title": "Sombrero de Fieltro",
+  "description": "Sombrero de fieltro con ala ancha y diseño elegante.",
+  "code": "SOM567",
+  "price": 70,
+  "status": true,
+  "stock": 18,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/sombrero_fieltro1.png",
+    "/images/sombrero_fieltro2.png"
+  ],
+  "createdAt": "2024-09-12T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95ab"
+  },
+  "id:custom": "PRD-1723300639210791",
+  "title": "Chaqueta de Denim",
+  "description": "Chaqueta de denim con ajuste clásico y detalles desgastados.",
+  "code": "CHA678",
+  "price": 90,
+  "status": true,
+  "stock": 12,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/chaqueta_denim1.png",
+    "/images/chaqueta_denim2.png"
+  ],
+  "createdAt": "2024-09-13T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95ac"
+  },
+  "id:custom": "PRD-1723300639210792",
+  "title": "Pantalones de Chándal",
+  "description": "Pantalones de chándal cómodos con cintura elástica y bolsillos.",
+  "code": "PAN789",
+  "price": 55,
+  "status": true,
+  "stock": 28,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/pantalones_chandal1.png",
+    "/images/pantalones_chandal2.png"
+  ],
+  "createdAt": "2024-09-14T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95ad"
+  },
+  "id:custom": "PRD-1723300639210793",
+  "title": "Camiseta de Rayas",
+  "description": "Camiseta con diseño de rayas y cuello redondo.",
+  "code": "CAM890",
+  "price": 30,
+  "status": true,
+  "stock": 40,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/camiseta_rayas1.png",
+    "/images/camiseta_rayas2.png"
+  ],
+  "createdAt": "2024-09-15T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95ae"
+  },
+  "id:custom": "PRD-1723300639210794",
+  "title": "Zapatillas Deportivas",
+  "description": "Zapatillas deportivas con amortiguación y soporte para el arco del pie.",
+  "code": "ZAP234",
+  "price": 110,
+  "status": true,
+  "stock": 22,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/zapatillas_deportivas1.png",
+    "/images/zapatillas_deportivas2.png"
+  ],
+  "createdAt": "2024-09-16T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95af"
+  },
+  "id:custom": "PRD-1723300639210795",
+  "title": "Blusa de Seda",
+  "description": "Blusa de seda con diseño elegante y escote en V.",
+  "code": "BLU345",
+  "price": 90,
+  "status": true,
+  "stock": 17,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/blusa_seda1.png",
+    "/images/blusa_seda2.png"
+  ],
+  "createdAt": "2024-09-17T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95b0"
+  },
+  "id:custom": "PRD-1723300639210796",
+  "title": "Bufanda de Cashmere",
+  "description": "Bufanda de cashmere suave y lujosa, ideal para el invierno.",
+  "code": "BUF456",
+  "price": 100,
+  "status": true,
+  "stock": 25,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/bufanda_cashmere1.png",
+    "/images/bufanda_cashmere2.png"
+  ],
+  "createdAt": "2024-09-18T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95b1"
+  },
+  "id:custom": "PRD-1723300639210797",
+  "title": "Abrigo de Lana",
+  "description": "Abrigo de lana con diseño clásico y botones forrados.",
+  "code": "ABI567",
+  "price": 250,
+  "status": true,
+  "stock": 8,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/abrigo_lana1.png",
+    "/images/abrigo_lana2.png"
+  ],
+  "createdAt": "2024-09-19T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95b2"
+  },
+  "id:custom": "PRD-1723300639210798",
+  "title": "Gorro de Punto",
+  "description": "Gorro de punto con diseño sencillo y cálido.",
+  "code": "GOR678",
+  "price": 25,
+  "status": true,
+  "stock": 60,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/gorro_punto1.png",
+    "/images/gorro_punto2.png"
+  ],
+  "createdAt": "2024-09-20T14:37:19.210Z"
+},
+{
+  "_id": {
+    "$oid": "64d23f3d987da12e928b95b3"
+  },
+  "id:custom": "PRD-1723300639210799",
+  "title": "Pantalones Cortos",
+  "description": "Pantalones cortos de verano con diseño casual y ajuste cómodo.",
+  "code": "PAN890",
+  "price": 40,
+  "status": true,
+  "stock": 32,
+  "category": "Moda",
+  "thumbnails": [
+    "/images/pantalones_cortos1.png",
+    "/images/pantalones_cortos2.png"
+  ],
+  "createdAt": "2024-09-21T14:37:19.210Z"
+}]

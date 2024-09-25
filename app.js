@@ -8,11 +8,13 @@ const userRoutes = require('./routes/userRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const productRoutes = require('./routes/productRoutes');
 const viewsRoutes = require('./routes/views.routes');
+const session = require('express-session');
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+// Configuración de Handlebars
 const hbs = exphbs.create({
     extname: '.handlebars',
     defaultLayout: 'main',
@@ -22,7 +24,18 @@ const hbs = exphbs.create({
     }
 });
 
+// Configuración de middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.use(session({
+    secret: 'gonza', 
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } 
+}));
+
+// Conexión a MongoDB
 mongoose.connect('mongodb://localhost:27017/apiDB', {})
     .then(() => {
         console.log('Connected to MongoDB');
@@ -31,10 +44,12 @@ mongoose.connect('mongodb://localhost:27017/apiDB', {})
         console.error('Failed to connect to MongoDB', err);
     });
 
+// Configuración del motor de vistas
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
+// Middleware para manejar el JSON y formularios
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -62,8 +77,10 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
+// Configuración del WebSocket
 require('./sockets/sockethandlers')(io);
 
+// Iniciar el servidor
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

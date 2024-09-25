@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Carrito</title>
+</head>
+<body>
+    <h1>Carrito Actual</h1>
+    {{#if cart}}
+        <h2>ID del Carrito: {{cart._id}}</h2>
+        <h3>Total de Items: {{cart.totalItems}}</h3>
+        <h3>Total Precio: {{cart.totalPrice}}</h3>
+        <ul>
+            {{#each cart.products}}
+                <li>
+                    Producto: {{this.product.title}}, Precio: {{this.product.price}}, Cantidad: {{this.quantity}}
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No hay productos en el carrito.</p>
+    {{/if}}
+</body>
+</html>

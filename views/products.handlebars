@@ -7,6 +7,12 @@
 <body>
 <h1>{{title}}</h1>
 
+<form action="/api/carts/current" method="POST">
+    <input type="hidden" name="productId" value="{{product._id}}">
+    <input type="number" name="quantity" value="1" min="1">
+    <button type="submit">Agregar al Carrito</button>
+</form>
+
 {{#if products.length}}
     <ul>
         {{#each products}}
@@ -14,11 +20,15 @@
                 <h2>{{this.title}}</h2>
                 <p>Price: ${{this.price}}</p>
                 <a href="/products/{{this._id}}">View Details</a>
-                <button data-id="{{this._id}}" class="add-to-cart">Add to Cart</button>
+                <form action="/api/carts/current" method="POST">
+                    <input type="hidden" name="productId" value="{{this._id}}">
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button type="submit">Add to Cart</button>
+                </form>
             </li>
         {{/each}}
     </ul>
-    
+
     <div>
         {{#if pagination.prevPage}}
             <a href="{{pagination.prevPage}}">Previous</a>

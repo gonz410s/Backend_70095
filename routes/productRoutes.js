@@ -20,6 +20,44 @@ router.post('/', async (req, res) => {
         res.status(500).json({ error: 'Failed to create product' });
     }
 });
+router.get('/products', async (req, res) => {
+    try {
+        const { limit = 10, page = 1, sort, query } = req.query;
+        
+        // Filtro de búsqueda
+        const searchFilter = query ? { $or: [{ category: query }, { status: query }] } : {};
+
+        // Ordenamiento
+        const sortOption = sort === 'asc' ? { price: 1 } : sort === 'desc' ? { price: -1 } : {};
+
+        // Paginación
+        const options = {
+            limit: parseInt(limit),
+            page: parseInt(page),
+            sort: sortOption
+        };
+
+        const products = await Product.paginate(searchFilter, options);
+
+        // Construir la respuesta con paginación
+        const response = {
+            status: 'success',
+            payload: products.docs,
+            totalPages: products.totalPages,
+            prevPage: products.prevPage,
+            nextPage: products.nextPage,
+            page: products.page,
+            hasPrevPage: products.hasPrevPage,
+            hasNextPage: products.hasNextPage,
+            prevLink: products.hasPrevPage ? `/products?limit=${limit}&page=${products.prevPage}` : null,
+            nextLink: products.hasNextPage ? `/products?limit=${limit}&page=${products.nextPage}` : null
+        };
+
+        res.json(response);
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: error.message });
+    }
+});
 
 // Obtener detalles de un producto específico
 router.get('/:pid', async (req, res) => {

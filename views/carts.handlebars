@@ -14,21 +14,26 @@
                 <li>
                     <h2>Carrito ID: {{_id}}</h2>
                     <p>User ID: {{userId.id}}</p> <!-- Mostrar el ID del usuario -->
-                    <p>User Name: {{userId.name}}</p> <!-- Mostrar el nombre del usuario -->
-                    <p>User Email: {{userId.email}}</p> <!-- Mostrar el email del usuario -->
-                    {{#each products}}
-                        <div class="cart-product">
-                            <h3>{{this.product.title}}</h3>
-                            <p>Price: ${{this.product.price}}</p>
-                            <p>Quantity: {{this.quantity}}</p>
-                        </div>
-                    {{/each}}
+                    <p>Total Items: {{products.length}}</p> <!-- Mostrar el número de ítems en el carrito -->
+                    <p>Total Price: ${{totalPrice}}</p> <!-- Mostrar el precio total del carrito -->
+                    <a href="/carts/{{_id}}">View Cart Details</a> <!-- Botón para ver los detalles del carrito -->
                 </li>
             {{/each}}
         </ul>
     {{else}}
         <p>No carritos found.</p>
     {{/if}}
+<h2>Carrito ID: {{cart._id}}</h2>
+<p>User ID: {{cart.userId}}</p>
+<ul>
+    {{#each cart.products}}
+        <li>
+            <h2>{{this.product.title}}</h2>
+            <p>Price: ${{this.product.price}}</p>
+            <p>Quantity: {{this.quantity}}</p>
+        </li>
+    {{/each}}
+</ul>
 
     <a href="/products">Back to Products</a>
 </body>

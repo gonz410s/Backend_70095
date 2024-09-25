@@ -9,7 +9,7 @@
     <h1>Productos</h1>
 
     <!-- Mostrar productos -->
-    {{#each products}}
+{{#each products}}
     <div class="product">
         <h2>{{this.title}}</h2>
         <p>Price: ${{this.price}}</p>
@@ -17,19 +17,20 @@
         <p>Stock: {{this.stock}}</p>
         <p>Category: {{this.category}}</p>
         <a href="/products/{{this._id}}">View Details</a>
-        <button onclick="addToCart('{{this._id}}')">Add to Cart</button>
+        <form action="/api/carts/add-to-cart/{{this._id}}" method="POST">
+            <button type="submit">Add to Cart</button>
+        </form>
     </div>
-    {{/each}}
+{{/each}}
 
-    <!-- Paginación -->
-    <div class="pagination">
-        {{#if hasPrevPage}}
-            <a href="/products?limit={{limit}}&page={{prevPage}}">Previous</a>
-        {{/if}}
-        {{#if hasNextPage}}
-            <a href="/products?limit={{limit}}&page={{nextPage}}">Next</a>
-        {{/if}}
-    </div>
+<div class="pagination">
+    {{#if hasPrevPage}}
+        <a href="/products?limit={{limit}}&page={{prevPage}}">Previous</a>
+    {{/if}}
+    {{#if hasNextPage}}
+        <a href="/products?limit={{limit}}&page={{nextPage}}">Next</a>
+    {{/if}}
+</div>
 
     <script>
         async function addToCart(productId) {

@@ -53,20 +53,34 @@ exports.getRealTimeProducts = async (req, res) => {
 
 // Obtener detalles de un producto por ID
 exports.getProductById = async (req, res) => {
-    const { pid } = req.params;
-
     try {
-        const product = await Product.findById(pid);
+        const product = await Product.findById(req.params.pid);
         if (!product) {
-            return res.status(404).send('Product not found');
+            return res.status(404).json({ status: 'error', message: 'Product not found' });
         }
-
-        res.render('productDetails', {
-            title: product.title,
-            product
-        });
+        res.render('productDetails', { product });
     } catch (error) {
-        console.error('Error fetching product details', error);
-        res.status(500).send('Error loading product details');
+        res.status(500).json({ status: 'error', message: 'Failed to retrieve product details', error: error.message });
+    }
+};
+
+exports.createProduct = async (req, res) => {
+    const { title, description, code, price, stock, category, thumbnails } = req.body;
+    
+    try {
+        const newProduct = new Product({
+            title,
+            description,
+            code,
+            price,
+            stock,
+            category,
+            thumbnails
+        });
+
+        await newProduct.save();
+        res.json({ status: 'success', product: newProduct });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: error.message });
     }
 };
